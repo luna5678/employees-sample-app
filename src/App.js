@@ -10,8 +10,8 @@ function App() {
     <div>
       <header>
         <h1>Employees</h1>
-        <Employees />
       </header>
+      <Employees />
     </div>
   );
 }
