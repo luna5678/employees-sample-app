@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Employee from "../employee/Employee";
+import { HiChevronDoubleDown, HiChevronDoubleUp } from 'react-icons/hi';
+import classes from './Employees.module.css'
 
 const Employees = () => {
   const [allEmployees, setAllEmployees] = useState([]);
+  const [expandAll, setExpandAll] = useState(false);
 
   const fetchEmployeesHandler = useCallback(async () => {
     try {
@@ -22,6 +25,10 @@ const Employees = () => {
     fetchEmployeesHandler();
   }, [fetchEmployeesHandler])
 
+  const expandAllHandler = () => {
+    setExpandAll((prevState) => !prevState)
+  };
+
   const employeesList = allEmployees.map((employee) => {
     return <Employee 
       key={employee.id} 
@@ -36,14 +43,22 @@ const Employees = () => {
       bio={employee.bio}
       phone={employee.phone}
       email={employee.email}
+      expandEmployee={expandAll}
     />
   })
 
   console.log('these are all the employees', allEmployees)
 
+  const expandContent = expandAll ? <p>Collapse All <HiChevronDoubleUp /></p> : <p>Expand All <HiChevronDoubleDown/></p>;
+
   return (
     <>
-      <h2>All employees</h2>
+      <div className={classes.employees__heading}>
+        <h2>All employees</h2>
+        <span className={classes['employees__expand-all']} onClick={expandAllHandler}>
+          {expandContent}
+        </span>
+      </div>
       {employeesList}
     </>
   )

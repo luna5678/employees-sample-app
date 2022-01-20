@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './Employee.module.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
@@ -8,6 +8,17 @@ const Employee = (props) => {
   const expandHandler = () => {
     setExpand((prevState) => !prevState);
   }
+
+  const {expandEmployee} = props;
+
+  useEffect(() => {
+    if (expandEmployee === true) {
+      setExpand(true)
+    }
+    if (expandEmployee === false) {
+      setExpand(false)
+    }
+  }, [expandEmployee])
 
   return (
     <section className={classes.employee}>
