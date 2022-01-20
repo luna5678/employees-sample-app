@@ -1,0 +1,19 @@
+.employee {
+  margin: 10px;
+}
+
+.employee__heading {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.employee__heading img {
+  width: 100px;
+}
+
+.employee__heading h3 {
+  margin-left: 20px;
+  display: inline-block;
+}
