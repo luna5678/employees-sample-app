@@ -3,6 +3,7 @@
   justify-content: space-around;
   align-items: center;
   margin: 20px auto;
+  max-width: 1400px;
 }
 
 .employees__expand-all {
@@ -10,8 +11,14 @@
   padding: 0 30px;
   border-radius: 30px;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .employees__expand-all:hover {
   cursor: pointer;
+}
+
+.error,
+.loading {
+  text-align: center;
 }

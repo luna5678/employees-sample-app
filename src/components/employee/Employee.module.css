@@ -1,5 +1,7 @@
 .employee {
   margin-bottom: 2em;
+  max-width: 1400px;
+  margin: 20px auto;
 }
 
 .employee__heading {

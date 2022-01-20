@@ -6,8 +6,12 @@ import classes from './Employees.module.css'
 const Employees = () => {
   const [allEmployees, setAllEmployees] = useState([]);
   const [expandAll, setExpandAll] = useState(false);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   const fetchEmployeesHandler = useCallback(async () => {
+    setError(false);
+
     try {
       const response = await fetch("/api/employees");
       if (!response.ok) {
@@ -17,8 +21,11 @@ const Employees = () => {
 
       setAllEmployees(data.employees);
     } catch (error) {
+      setError(true)
       console.log(error.message)
     }
+
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -47,8 +54,6 @@ const Employees = () => {
     />
   })
 
-  console.log('these are all the employees', allEmployees)
-
   const expandContent = expandAll ? <p>Collapse All <HiChevronDoubleUp /></p> : <p>Expand All <HiChevronDoubleDown/></p>;
 
   return (
@@ -59,6 +64,8 @@ const Employees = () => {
           {expandContent}
         </span>
       </div>
+      {error && <p className={classes.error}>Oops! There was an issue. Please try again.</p>}
+      {isLoading && <p className={classes.loading}>Loading...</p>}
       {employeesList}
     </>
   )
