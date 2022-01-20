@@ -23,7 +23,20 @@ const Employees = () => {
   }, [fetchEmployeesHandler])
 
   const employeesList = allEmployees.map((employee) => {
-    return <Employee key={employee.id} avatar={employee.avatar} firstName={employee.firstName} lastName={employee.lastName} />
+    return <Employee 
+      key={employee.id} 
+      id={employee.id}
+      avatar={employee.avatar} 
+      firstName={employee.firstName} 
+      lastName={employee.lastName}
+      addressStreet={employee.address.streetAddress}
+      addressCity={employee.address.city}
+      addressState={employee.address.state}
+      addressZip={employee.address.zipCode}
+      bio={employee.bio}
+      phone={employee.phone}
+      email={employee.email}
+    />
   })
 
   console.log('these are all the employees', allEmployees)
