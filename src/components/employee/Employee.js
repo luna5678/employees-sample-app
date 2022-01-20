@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import classes from './Employee.module.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import DeleteEmployee from './DeleteEmployee';
 
 const Employee = (props) => {
   const [expand, setExpand] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const expandHandler = () => {
     setExpand((prevState) => !prevState);
@@ -19,6 +21,14 @@ const Employee = (props) => {
       setExpand(false)
     }
   }, [expandEmployee])
+
+  const showDeleteModalHandler = () => {
+    setDeleteModal(true);
+  }
+
+  const closeDeleteModalHandler = () => {
+    setDeleteModal(false);
+  }
 
   return (
     <section className={classes.employee}>
@@ -55,6 +65,18 @@ const Employee = (props) => {
           <span className={classes.labels}>Bio: </span>
           {props.bio}
         </p>
+
+        <button onCloseModal={closeDeleteModalHandler} onClick={showDeleteModalHandler} className={classes.delete}>
+          Delete
+        </button>
+
+        {deleteModal && 
+          <DeleteEmployee 
+            onCloseModal={closeDeleteModalHandler} 
+            employeeFirstName={props.firstName} 
+            employeeLastName={props.lastName} 
+          />
+        }
       </div>}
     </section>
   )

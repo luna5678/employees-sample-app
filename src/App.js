@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <header>
-        <h1>Employees</h1>
+        <h1 style={{textAlign: 'center'}}>Employees</h1>
       </header>
       <Employees />
     </div>

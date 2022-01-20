@@ -1,0 +1,25 @@
+.buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.cancel-button {
+  background: rgb(243, 180, 99);
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.cancel-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+}
+
+.delete-button {
+  background: antiquewhite;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
