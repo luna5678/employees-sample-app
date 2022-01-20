@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.employee__heading:hover {
+  cursor: pointer;
+}
+
 .employee__heading__text {
   display: flex;
   align-items: center;
@@ -28,10 +32,6 @@
 .employee__expand-arrow {
   padding: 10px;
   font-size: 1.2rem;
-}
-
-.employee__expand-arrow:hover {
-  cursor: pointer;
 }
 
 .employee__details {

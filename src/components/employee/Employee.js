@@ -22,13 +22,13 @@ const Employee = (props) => {
 
   return (
     <section className={classes.employee}>
-      <div className={classes.employee__heading}>
+      <div className={classes.employee__heading} onClick={expandHandler}>
         <div className={classes.employee__heading__text}>
           <img src={props.avatar} alt={`${props.firstName} ${props.lastName}'s Avatar`} />
           <h3>{props.firstName} {props.lastName}</h3>
         </div>
         
-        <span className={classes['employee__expand-arrow']} onClick={expandHandler}>
+        <span className={classes['employee__expand-arrow']}>
           {expand ? <FaChevronUp/> : <FaChevronDown />}
         </span>
       </div>

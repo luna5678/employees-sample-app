@@ -54,7 +54,7 @@ const Employees = () => {
   return (
     <>
       <div className={classes.employees__heading}>
-        <h2>All employees</h2>
+        <h2>Current Employees</h2>
         <span className={classes['employees__expand-all']} onClick={expandAllHandler}>
           {expandContent}
         </span>
