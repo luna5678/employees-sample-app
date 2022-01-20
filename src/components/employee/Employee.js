@@ -1,15 +1,29 @@
+import { useState } from 'react';
 import classes from './Employee.module.css';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const Employee = (props) => {
+  const [expand, setExpand] = useState(false);
+
+  const expandHandler = () => {
+    setExpand((prevState) => !prevState);
+  }
 
   return (
-    <div className={classes.employee}>
+    <section className={classes.employee}>
       <div className={classes.employee__heading}>
-        <img src={props.avatar} alt={`${props.firstName} ${props.lastName}'s Avatar`} />
-        <h3>{props.firstName} {props.lastName}</h3>
+        <div className={classes.employee__heading__text}>
+          <img src={props.avatar} alt={`${props.firstName} ${props.lastName}'s Avatar`} />
+          <h3>{props.firstName} {props.lastName}</h3>
+        </div>
+        
+        <span className={classes['employee__expand-arrow']} onClick={expandHandler}>
+          {expand ? <FaChevronUp/> : <FaChevronDown />}
+        </span>
       </div>
 
-      <div className={classes.employee__details}>
+      {expand &&
+        <div className={classes.employee__details}>
         <p>
           <span className={classes.labels}>Employee ID: </span>
           {props.id}
@@ -30,8 +44,8 @@ const Employee = (props) => {
           <span className={classes.labels}>Bio: </span>
           {props.bio}
         </p>
-      </div>
-    </div>
+      </div>}
+    </section>
   )
 }
 

@@ -1,17 +1,22 @@
 .employee {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .employee__heading {
   display: flex;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: antiquewhite;
   border-radius: 10px;
   align-items: center;
-  background-color: antiquewhite;
+}
+
+.employee__heading__text {
+  display: flex;
+  align-items: center;
 }
 
 .employee__heading img {
-  margin-left: 20px;
   width: 120px;
 }
 
@@ -20,8 +25,17 @@
   display: inline-block;
 }
 
+.employee__expand-arrow {
+  padding: 10px;
+  font-size: 1.2rem;
+}
+
+.employee__expand-arrow:hover {
+  cursor: pointer;
+}
+
 .employee__details {
-  padding-left: 30px;
+  padding: 0 30px;
 }
 
 .employee__details p {
