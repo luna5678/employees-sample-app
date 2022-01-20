@@ -66,7 +66,7 @@ const Employee = (props) => {
           {props.bio}
         </p>
 
-        <button onCloseModal={closeDeleteModalHandler} onClick={showDeleteModalHandler} className={classes.delete}>
+        <button onClick={showDeleteModalHandler} className={classes.delete}>
           Delete
         </button>
 
@@ -75,6 +75,8 @@ const Employee = (props) => {
             onCloseModal={closeDeleteModalHandler} 
             employeeFirstName={props.firstName} 
             employeeLastName={props.lastName} 
+            employeeID={props.id}
+            onDeleteEmployee={props.onDeleteEmployee}
           />
         }
       </div>}

@@ -13,7 +13,7 @@ const DeleteEmployee = (props) => {
           Cancel
         </button>
 
-        <button className={classes['delete-button']}>
+        <button className={classes['delete-button']} onClick={() => props.onDeleteEmployee(props.employeeID)}>
           Delete
         </button>
       </div>

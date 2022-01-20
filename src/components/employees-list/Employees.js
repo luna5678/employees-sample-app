@@ -13,12 +13,11 @@ const Employees = () => {
     setError(false);
 
     try {
-      const response = await fetch("/api/employees");
+      const response = await fetch('/api/employees');
       if (!response.ok) {
         throw new Error(response.status)
       }
       const data = await response.json();
-
       setAllEmployees(data.employees);
     } catch (error) {
       setError(true)
@@ -30,7 +29,28 @@ const Employees = () => {
 
   useEffect(() => {
     fetchEmployeesHandler();
-  }, [fetchEmployeesHandler])
+  }, [fetchEmployeesHandler]);
+
+  const deleteEmployeeHandler = async (id) => {
+    setError(false);
+
+    try {
+      const response = await fetch(`/api/employees/${id}`, {
+        method: 'DELETE',
+        header: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error(response.status)
+      }
+
+      fetchEmployeesHandler();
+    } catch (error) {
+      setError(true);
+      console.log(error.message);
+    }
+  };
 
   const expandAllHandler = () => {
     setExpandAll((prevState) => !prevState)
@@ -51,6 +71,7 @@ const Employees = () => {
       phone={employee.phone}
       email={employee.email}
       expandEmployee={expandAll}
+      onDeleteEmployee={deleteEmployeeHandler}
     />
   })
 
