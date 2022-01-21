@@ -102,7 +102,9 @@ const Employees = () => {
     />
   })
 
-  const expandContent = expandAll ? <p>Collapse All <HiChevronDoubleUp /></p> : <p>Expand All <HiChevronDoubleDown/></p>;
+  const expandContent = expandAll 
+    ? <p>Collapse All <HiChevronDoubleUp /></p> 
+    : <p>Expand All <HiChevronDoubleDown/></p>;
 
   return (
     <>

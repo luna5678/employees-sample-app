@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import Modal from '../UI/Modal';
-import classes from './EditEmployee.module.css'
+import Input from '../UI/Input';
+import classes from './EditEmployee.module.css';
 
 const EditEmployee = (props) => {
   const firstNameRef = useRef();
@@ -40,43 +41,89 @@ const EditEmployee = (props) => {
       </h3>
 
       <form onSubmit={submitHandler}>
-        <div className={classes.control}>
-          <label>Employee ID</label>
-          <input type='text' defaultValue={props.id} disabled />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='first-name'>First Name</label>
-          <input id='first-name' ref={firstNameRef} type='text' defaultValue={props.firstName} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='last-name'>Last Name</label>
-          <input id='last-name' ref={lastNameRef} type='text' defaultValue={props.lastName} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='email'>Email</label>
-          <input id='email' ref={emailRef} type='text' defaultValue={props.email} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='phone'>Phone</label>
-          <input id='phone' ref={phoneRef} type='text' defaultValue={props.phone} />
-        </div>
+        <Input 
+          label='Employee ID'
+          input={{
+            id: 'id',
+            type: 'text',
+            disabled: true,
+            defaultValue: `${props.id}`,
+          }}
+        />
+        <Input 
+          ref={firstNameRef}
+          label='First Name'
+          input={{
+            id: 'first-name',
+            type: 'text',
+            defaultValue: `${props.firstName}`
+          }}
+        />
+        <Input 
+          ref={lastNameRef}
+          label='Last Name'
+          input={{
+            id: 'last-name',
+            type: 'text',
+            defaultValue: `${props.lastName}`
+          }}
+        />
+        <Input 
+          ref={emailRef}
+          label='Email'
+          input={{
+            id: 'email',
+            type: 'email',
+            defaultValue: `${props.email}`
+          }}
+        />
+        <Input 
+          ref={phoneRef}
+          label='Phone'
+          input={{
+            id: 'phone',
+            type: 'text',
+            defaultValue: `${props.phone}`
+          }}
+        />
+
         <p className={classes['address-heading']}>Address:</p>
-        <div className={classes.control}>
-          <label htmlFor='street'>Street</label>
-          <input id='street' ref={addressStreetRef} type='text' defaultValue={props.addressStreet} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='city'>City</label>
-          <input id='city' ref={addressCityRef} type='text' defaultValue={props.addressCity} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='state'>State</label>
-          <input id='state' ref={addressStateRef} type='text' defaultValue={props.addressState} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='zip'>Zip Code</label>
-          <input id='zip' ref={addressZipRef} type='text' defaultValue={props.addressZip} />
-        </div>
+        <Input 
+          ref={addressStreetRef}
+          label='Street'
+          input={{
+            id: 'street',
+            type: 'text',
+            defaultValue: `${props.addressStreet}`
+          }}
+        />
+        <Input 
+          ref={addressCityRef}
+          label='City'
+          input={{
+            id: 'city',
+            type: 'text',
+            defaultValue: `${props.addressCity}`
+          }}
+        />
+        <Input 
+          ref={addressStateRef}
+          label='State'
+          input={{
+            id: 'state',
+            type: 'text',
+            defaultValue: `${props.addressState}`
+          }}
+        />
+        <Input 
+          ref={addressZipRef}
+          label='Zip Code'
+          input={{
+            id: 'zip',
+            type: 'text',
+            defaultValue: `${props.addressZip}`
+          }}
+        />
 
         <div className={classes['buttons-container']}>
           <button type="submit" className={classes.submit}>Update</button>
