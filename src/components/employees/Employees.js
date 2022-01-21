@@ -10,6 +10,7 @@ const Employees = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true)
 
+  // GET all employees
   const fetchEmployeesHandler = useCallback(async () => {
     setError(false);
 
@@ -33,10 +34,12 @@ const Employees = () => {
     fetchEmployeesHandler();
   }, [fetchEmployeesHandler]);
 
+  // Expand all employee details
   const expandAllHandler = () => {
     setExpandAll((prevState) => !prevState)
   };
 
+  // DELETE an employee
   const deleteEmployeeHandler = async (id) => {
     setError(false);
     setIsLoading(true);
@@ -59,6 +62,7 @@ const Employees = () => {
     }
   };
 
+  // UPDATE an employee
   const patchEmployeeHandler = async (employeeData) => {
     setError(false);
     setIsLoading(true);
