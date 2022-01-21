@@ -49,11 +49,28 @@
   font-weight: 700;
 }
 
+.buttons-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
 .delete {
   background: rgb(223, 223, 223);
   border: none;
   border-radius: 30px;
   padding: 10px 20px;
+}
+
+.edit {
+  background: rgb(238, 210, 210);
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.edit:hover {
+  cursor: pointer;
 }
 
 .delete:hover {

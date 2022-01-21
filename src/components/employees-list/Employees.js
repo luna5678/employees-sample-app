@@ -31,6 +31,10 @@ const Employees = () => {
     fetchEmployeesHandler();
   }, [fetchEmployeesHandler]);
 
+  const expandAllHandler = () => {
+    setExpandAll((prevState) => !prevState)
+  };
+
   const deleteEmployeeHandler = async (id) => {
     setError(false);
 
@@ -52,9 +56,15 @@ const Employees = () => {
     }
   };
 
-  const expandAllHandler = () => {
-    setExpandAll((prevState) => !prevState)
-  };
+  // const patchEmployeeHandler = async (employeeData) => {
+  //   setError(false);
+
+  //   try{
+      
+  //   } catch (error) {
+
+  //   }
+  // }
 
   const employeesList = allEmployees.map((employee) => {
     return <Employee 

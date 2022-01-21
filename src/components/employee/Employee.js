@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import classes from './Employee.module.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import EditEmployee from './EditEmployee';
 import DeleteEmployee from './DeleteEmployee';
 
 const Employee = (props) => {
   const [expand, setExpand] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
   const expandHandler = () => {
     setExpand((prevState) => !prevState);
@@ -30,6 +32,14 @@ const Employee = (props) => {
     setDeleteModal(false);
   }
 
+  const showEditModalHandler = () => {
+    setEditModal(true);
+  }
+
+  const closeEditModalHandler = () => {
+    setEditModal(false);
+  }
+
   return (
     <section className={classes.employee}>
       <div className={classes.employee__heading} onClick={expandHandler}>
@@ -50,6 +60,10 @@ const Employee = (props) => {
           {props.id}
         </p>
         <p>
+          <span className={classes.labels}>Bio: </span>
+          {props.bio}
+        </p>
+        <p>
           <span className={classes.labels}>Email: </span>
           {props.email}
         </p>
@@ -61,21 +75,31 @@ const Employee = (props) => {
           <span className={classes.labels}>Address: </span>
           {props.addressStreet}, {props.addressCity}, {props.addressState} {props.addressZip}
         </p>
-        <p>
-          <span className={classes.labels}>Bio: </span>
-          {props.bio}
-        </p>
-
-        <button onClick={showDeleteModalHandler} className={classes.delete}>
-          Delete
-        </button>
+        
+        <div className={classes['buttons-container']}>
+          <button onClick={showEditModalHandler} className={classes.edit}>
+            Edit
+          </button>
+          <button onClick={showDeleteModalHandler} className={classes.delete}>
+            Delete
+          </button>
+        </div>
+        
+        {editModal && 
+          <EditEmployee
+            onCloseModal={closeEditModalHandler}
+            firstName={props.firstName}
+            lastName={props.lastName} 
+            id={props.id}
+          />
+        }
 
         {deleteModal && 
           <DeleteEmployee 
             onCloseModal={closeDeleteModalHandler} 
-            employeeFirstName={props.firstName} 
-            employeeLastName={props.lastName} 
-            employeeID={props.id}
+            firstName={props.firstName} 
+            lastName={props.lastName} 
+            id={props.id}
             onDeleteEmployee={props.onDeleteEmployee}
           />
         }

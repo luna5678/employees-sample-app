@@ -1,0 +1,23 @@
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.edit-modal__heading {
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+}
+
+.control label {
+  font-weight: 700;
+}
+
+.control input {
+  font: inherit;
+  width: 70%;
+  min-width: 150px;
+  padding: 5px;
+}
