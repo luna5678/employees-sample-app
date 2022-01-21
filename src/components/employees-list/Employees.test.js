@@ -9,6 +9,6 @@ test('renders employee from json response', async () => {
 
   render(<Employees />);
   
-  const employees = await screen.findAllByRole('heading', { level: 3 }, { waitFor: 3000 });
+  const employees = await screen.findAllByRole('heading', { level: 3 }, { timeout: 3000 });
   expect(employees).not.toHaveLength(0);
 })

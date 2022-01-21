@@ -37,6 +37,7 @@ const Employees = () => {
 
   const deleteEmployeeHandler = async (id) => {
     setError(false);
+    setIsLoading(true);
 
     try {
       const response = await fetch(`/api/employees/${id}`, {
@@ -54,6 +55,8 @@ const Employees = () => {
       setError(true);
       console.log(error.message);
     }
+
+    setIsLoading(false);
   };
 
   const patchEmployeeHandler = async (employeeData) => {

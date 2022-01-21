@@ -7,7 +7,9 @@ const DeleteEmployee = (props) => {
       Are you sure you want to delete {props.firstName} {props.lastName}?
       
       <div className={classes.buttons}>
-        <button className={classes['delete-button']} onClick={() => props.onDeleteEmployee(props.id)}>
+        <button 
+          className={classes['delete-button']} 
+          onClick={() => {props.onDeleteEmployee(props.id); props.onCloseModal()}}>
           Delete
         </button>
 
