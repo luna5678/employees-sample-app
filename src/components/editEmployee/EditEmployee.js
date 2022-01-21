@@ -1,9 +1,11 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import Modal from '../UI/Modal';
 import Input from '../UI/Input';
 import classes from './EditEmployee.module.css';
 
 const EditEmployee = (props) => {
+  const [error, setError] = useState(null);
+
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
@@ -15,23 +17,39 @@ const EditEmployee = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    const firstNameTrimmed = firstNameRef.current.value.trim();
+    const lastNameTrimmed = lastNameRef.current.value.trim();
+    const emailTrimmed = emailRef.current.value.trim();
+    const phoneTrimmed = phoneRef.current.value.trim();
+    const addressStreetTrimmed = addressStreetRef.current.value.trim();
+    const addressCityTrimmed = addressCityRef.current.value.trim();
+    const addressStateTrimmed = addressStateRef.current.value.trim();
+    const addressZipTrimmed = addressZipRef.current.value.trim();
+
+    if (!firstNameTrimmed || !lastNameTrimmed || !emailTrimmed || !phoneTrimmed || !addressStreetTrimmed || !addressCityTrimmed || !addressStateTrimmed || !addressZipTrimmed ) {
+      return setError(true)
+    }
+
     props.onCloseModal();
 
     const newValue = {
       id: props.id,
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-      phone: phoneRef.current.value,
-      email: emailRef.current.value,
+      firstName: firstNameTrimmed,
+      lastName: lastNameTrimmed,
+      phone: phoneTrimmed,
+      email: emailTrimmed,
       address: {
-        streetAddress: addressStreetRef.current.value,
-        city: addressCityRef.current.value,
-        state: addressStateRef.current.value,
-        zipCode: addressZipRef.current.value
+        streetAddress: addressStreetTrimmed,
+        city: addressCityTrimmed,
+        state: addressStateTrimmed,
+        zipCode: addressZipTrimmed
       }
     }
 
     props.onEditEmployee(newValue);
+
+    setError(null);
   }
 
   return (
@@ -39,6 +57,8 @@ const EditEmployee = (props) => {
       <h3 className={classes['edit-modal__heading']}>
         Edit Employee Information for {props.firstName} {props.lastName}:
       </h3>
+
+      {error && <p className={classes.error}>Error: Do not leave any fields blank.</p>}
 
       <form onSubmit={submitHandler}>
         <Input 
