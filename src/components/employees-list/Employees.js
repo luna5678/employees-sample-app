@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react";
-import Employee from "../employee/Employee";
+import React, { useEffect, useState, useCallback } from 'react';
+import Employee from '../employee/Employee';
+import LoadingScreen from '../UI/LoadingScreen';
 import { HiChevronDoubleDown, HiChevronDoubleUp } from 'react-icons/hi';
 import classes from './Employees.module.css'
 
@@ -55,8 +56,6 @@ const Employees = () => {
       setError(true);
       console.log(error.message);
     }
-
-    setIsLoading(false);
   };
 
   const patchEmployeeHandler = async (employeeData) => {
@@ -78,9 +77,11 @@ const Employees = () => {
       setError(true);
       console.log(error.message)
     }
-
-    setIsLoading(false);
   }
+
+  const expandContent = expandAll 
+    ? <p>Collapse All <HiChevronDoubleUp /></p> 
+    : <p>Expand All <HiChevronDoubleDown/></p>;
 
   const employeesList = allEmployees.map((employee) => {
     return <Employee 
@@ -102,10 +103,6 @@ const Employees = () => {
     />
   })
 
-  const expandContent = expandAll 
-    ? <p>Collapse All <HiChevronDoubleUp /></p> 
-    : <p>Expand All <HiChevronDoubleDown/></p>;
-
   return (
     <>
       <div className={classes.employees__heading}>
@@ -115,7 +112,7 @@ const Employees = () => {
         </span>
       </div>
       {error && <p className={classes.error}>Oops! There was an issue. Please try again.</p>}
-      {isLoading && <p className={classes.loading}>Loading...</p>}
+      {isLoading && <LoadingScreen />}
       {employeesList}
     </>
   )

@@ -1,0 +1,11 @@
+.overlay {
+  position: fixed;
+  top: 30vh;
+  left: 45%;
+  width: 100px;
+  z-index: 30;
+  text-align: center;
+  background: rgba(198, 198, 198, 0.2);
+  box-shadow: 1px 1px 10px 10px rgba(198, 198, 198, 0.2);
+  font-weight: 700;
+}
