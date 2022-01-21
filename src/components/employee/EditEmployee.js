@@ -8,13 +8,15 @@ const EditEmployee = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    props.onCloseModal();
 
     const newValue = {
+      id: props.id,
       firstName: firstNameRef.current.value,
       lastName: lastNameRef.current.value
     }
 
-    console.log(newValue)
+    props.onEditEmployee(newValue);
   }
 
   return (
@@ -33,7 +35,10 @@ const EditEmployee = (props) => {
           <input id='last-name' ref={lastNameRef} type='text' defaultValue={props.lastName} />
         </div>
 
-        <button type="submit">Submit</button>
+        <div className={classes['buttons-container']}>
+          <button type="submit" className={classes.submit}>Update</button>
+          <button type="reset" onClick={props.onCloseModal} className={classes.cancel}>Cancel</button>
+        </div>
       </form>
     </Modal>
   )

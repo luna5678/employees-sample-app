@@ -91,6 +91,7 @@ const Employee = (props) => {
             firstName={props.firstName}
             lastName={props.lastName} 
             id={props.id}
+            onEditEmployee={props.onEditEmployee}
           />
         }
 

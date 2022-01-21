@@ -56,15 +56,28 @@ const Employees = () => {
     }
   };
 
-  // const patchEmployeeHandler = async (employeeData) => {
-  //   setError(false);
+  const patchEmployeeHandler = async (employeeData) => {
+    setError(false);
+    setIsLoading(true);
 
-  //   try{
-      
-  //   } catch (error) {
+    try{
+      const response = await fetch(`/api/employees/${employeeData.id}`, {
+        method: 'PATCH',
+        'Content-Type': 'application/json',
+        body: JSON.stringify(employeeData)
+      })
+      if (!response.ok) {
+        throw new Error(response.status)
+      }
 
-  //   }
-  // }
+      fetchEmployeesHandler();
+    } catch (error) {
+      setError(true);
+      console.log(error.message)
+    }
+
+    setIsLoading(false);
+  }
 
   const employeesList = allEmployees.map((employee) => {
     return <Employee 
@@ -81,6 +94,7 @@ const Employees = () => {
       phone={employee.phone}
       email={employee.email}
       expandEmployee={expandAll}
+      onEditEmployee={patchEmployeeHandler}
       onDeleteEmployee={deleteEmployeeHandler}
     />
   })

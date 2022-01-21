@@ -21,4 +21,6 @@
 .error,
 .loading {
   text-align: center;
+  color: rgb(230, 132, 58);
+  font-weight: 700;
 }

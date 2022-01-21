@@ -21,3 +21,31 @@
   min-width: 150px;
   padding: 5px;
 }
+
+.buttons-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.submit {
+  background: antiquewhite;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+
+.cancel {
+  background: rgb(243, 180, 99);
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.cancel:hover {
+  cursor: pointer;
+}
