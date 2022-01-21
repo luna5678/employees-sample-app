@@ -91,6 +91,12 @@ const Employee = (props) => {
             firstName={props.firstName}
             lastName={props.lastName} 
             id={props.id}
+            email={props.email}
+            phone={props.phone}
+            addressStreet={props.addressStreet}
+            addressCity={props.addressCity}
+            addressState={props.addressState}
+            addressZip={props.addressZip}
             onEditEmployee={props.onEditEmployee}
           />
         }
