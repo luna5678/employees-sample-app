@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import classes from './Employee.module.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import EditEmployee from './EditEmployee';
-import DeleteEmployee from './DeleteEmployee';
+import EditEmployee from '../editEmployee/EditEmployee';
+import DeleteEmployee from '../deleteEmployee/DeleteEmployee';
 
 const Employee = (props) => {
   const [expand, setExpand] = useState(false);

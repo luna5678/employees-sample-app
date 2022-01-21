@@ -112,7 +112,7 @@ const Employees = () => {
         </span>
       </div>
       {error && <p className={classes.error}>Oops! There was an issue. Please try again.</p>}
-      {isLoading && <LoadingScreen />}
+      {isLoading && !error && <LoadingScreen />}
       {employeesList}
     </>
   )

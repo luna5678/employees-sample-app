@@ -1,5 +1,5 @@
 import { makeServer } from "./server";
-import Employees from "./components/employees-list/Employees";
+import Employees from "./components/employees/Employees";
 
 if (process.env.NODE_ENV === "development") {
   makeServer({ environment: "development" });
